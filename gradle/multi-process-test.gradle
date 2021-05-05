@@ -57,11 +57,9 @@
 import org.apache.geode.gradle.testing.Executers
 import org.apache.geode.gradle.testing.isolation.WorkingDirectoryIsolator
 
-def multiProcessTestTasks = [acceptanceTest, repeatAcceptanceTest,
-                             distributedTest, repeatDistributedTest,
+def multiProcessTestTasks = [distributedTest, repeatDistributedTest,
                              integrationTest, repeatIntegrationTest,
-                             upgradeTest, repeatUpgradeTest,
-                             uiTest, repeatUnitTest]
+                             repeatUnitTest]
 
 if (project.hasProperty('parallelDunit')) {
     def parallelForks = project.hasProperty('testMaxParallelForks')

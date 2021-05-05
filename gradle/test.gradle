@@ -48,18 +48,6 @@ facets {
   distributedTest {
     includeInCheckLifecycle = false
   }
-  performanceTest {
-    includeInCheckLifecycle = false
-  }
-  acceptanceTest {
-    includeInCheckLifecycle = false
-  }
-  uiTest {
-    includeInCheckLifecycle = false
-  }
-  upgradeTest {
-    includeInCheckLifecycle = false
-  }
 }
 
 dependencies {
@@ -78,8 +66,7 @@ dependencies {
   }
 }
 
-configure([integrationTest, distributedTest, performanceTest, acceptanceTest, uiTest,
-           upgradeTest]) {
+configure([integrationTest, distributedTest]) {
   forkEvery 1
 
   doFirst {
@@ -88,7 +75,7 @@ configure([integrationTest, distributedTest, performanceTest, acceptanceTest, ui
   outputs.upToDateWhen { false }
 }
 
-configure([integrationTest, distributedTest, performanceTest]) {
+configure([integrationTest, distributedTest]) {
   useJUnit {
     if (project.hasProperty("testCategory")) {
       includeCategories += project.testCategory
@@ -115,30 +102,18 @@ task repeatIntegrationTest(type: RepeatTest) {
   testClassesDirs = project.sourceSets.integrationTest.output.classesDirs
 }
 
-task repeatAcceptanceTest(type: RepeatTest) {
-  dependsOn { acceptanceTest.taskDependencies }
-  classpath = project.sourceSets.acceptanceTest.runtimeClasspath
-  testClassesDirs = project.sourceSets.acceptanceTest.output.classesDirs
-}
-
-task repeatUpgradeTest(type: RepeatTest) {
-  dependsOn { upgradeTest.taskDependencies }
-  classpath = project.sourceSets.upgradeTest.runtimeClasspath
-  testClassesDirs = project.sourceSets.upgradeTest.output.classesDirs
-}
-
 task repeatUnitTest(type: RepeatTest) {
   dependsOn { test.taskDependencies }
   // default classpath works for this one.
 }
 
-configure([integrationTest, distributedTest, performanceTest, acceptanceTest, uiTest, upgradeTest]) {
+configure([integrationTest, distributedTest]) {
   if (project.hasProperty('excludeTest')) {
     exclude project.getProperty('excludeTest').split(',')
   }
 }
 
-configure([repeatDistributedTest, repeatIntegrationTest, repeatUpgradeTest, repeatUnitTest, repeatAcceptanceTest]) {
+configure([repeatDistributedTest, repeatIntegrationTest, repeatUnitTest]) {
   times = Integer.parseInt(repeat)
   useJUnit {}
   outputs.upToDateWhen { false }
@@ -223,18 +198,8 @@ gradle.taskGraph.whenReady({ graph ->
   }
 })
 
-acceptanceTest {
-  // Acceptance tests may reach out and run a gfsh command from the assembled gfsh.
-  // If the test JVM version is specified, we must have the correct JAVA_HOME set for gfsh to use.
-  // See also environment configuration for parallel testing in multi-process-test.gradle
-  if (project.hasProperty('testJVM') && !testJVM.trim().isEmpty()) {
-    environment "JAVA_HOME", "${project.testJVM}"
-  }
-}
-
-
 // Make precheckin task run all validation tests for checking in code.
-task precheckin(dependsOn: [build, acceptanceTest, integrationTest, distributedTest, upgradeTest]) {
+task precheckin(dependsOn: [build, integrationTest, distributedTest]) {
   description 'Run this task before checking in code to validate changes. It runs tests beyond unitTest'
 }
 
@@ -250,10 +215,6 @@ project.tasks.named('assemble').configure {
       project.tasks.named('compileTestJava'),
       project.tasks.named('compileIntegrationTestJava'),
       project.tasks.named('compileDistributedTestJava'),
-      project.tasks.named('compileAcceptanceTestJava'),
-      project.tasks.named('compileUiTestJava'),
-      project.tasks.named('compilePerformanceTestJava'),
-      project.tasks.named('compileUpgradeTestJava'),
     ]
   )
 }
