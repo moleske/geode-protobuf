@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: build (unix)
+        run: ./gradlew build
+        if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
+      - name: build (windows)
+        run: ./gradlew.bat build
+        if: matrix.os == 'windows-latest'
+  distributedTest:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: distributedTest (unix)
+        run: ./gradlew distributedTest
+        if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
+      - name: distributedTest (windows)
+        run: ./gradlew.bat distributedTest
+        if: matrix.os == 'windows-latest'
+  integrationTest:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: integrationTest (unix)
+        run: ./gradlew integrationTest
+        if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
+      - name: integrationTest (windows)
+        run: ./gradlew.bat integrationTest
+        if: matrix.os == 'windows-latest'
