@@ -25,6 +25,7 @@ rat {
     '.git/**',
     '**/.gitignore',
     '**/.gitkeep',
+    '.github/**',
 
     // gradle
     '**/.gradle/**',
