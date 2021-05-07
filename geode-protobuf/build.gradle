@@ -22,13 +22,13 @@ apply from: "${rootDir}/${scriptDir}/warnings.gradle"
 
 
 dependencies {
-  compile(platform(project(':boms:geode-all-bom')))
+  api(platform(project(':boms:geode-all-bom')))
   implementation('org.apache.geode:geode-logging:1.13.2')
   implementation('org.apache.geode:geode-serialization:1.13.2')
   implementation('org.apache.geode:geode-tcp-server:1.13.2')
   implementation('org.apache.geode:geode-membership:1.13.2')
-  compile('org.apache.geode:geode-core:1.13.2')
-  compile(project(':geode-protobuf-messages'))
+  api('org.apache.geode:geode-core:1.13.2')
+  api(project(':geode-protobuf-messages'))
   testImplementation('org.apache.geode:geode-core:1.13.2')
   testImplementation('org.apache.geode:geode-junit:1.13.2') {
     exclude module: 'geode-core'

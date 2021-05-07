@@ -21,8 +21,8 @@ apply from: "${rootDir}/${scriptDir}/standard-subproject-configuration.gradle"
 
 
 dependencies {
-  compile(platform(project(':boms:geode-all-bom')))
-  compile('org.apache.geode:geode-core:1.13.2')
+  api(platform(project(':boms:geode-all-bom')))
+  api('org.apache.geode:geode-core:1.13.2')
   compileOnly('org.apache.geode:geode-common:1.13.2')
   compileOnly('org.apache.geode:geode-protobuf:1.13.2')
 

@@ -64,8 +64,8 @@ idea {
 
 task zip(type: Zip) {
   from 'src/main/proto'
-  baseName = "${project.name}-definitions"
-  destinationDir = file("$buildDir/libs")
+  archiveBaseName = "${project.name}-definitions"
+  destinationDirectory = file("$buildDir/libs")
 }
 
 assemble.dependsOn 'zip'
