@@ -30,14 +30,14 @@ dependencies {
   api('org.apache.geode:geode-core:1.13.3')
   api(project(':geode-protobuf-messages'))
   testImplementation('org.apache.geode:geode-core:1.13.2')
-  testImplementation('org.apache.geode:geode-junit:1.13.3') {
+  testImplementation('org.apache.geode:geode-junit:1.13.4') {
     exclude module: 'geode-core'
   }
   testImplementation(project(':geode-protobuf:geode-protobuf-test'))
   integrationTestImplementation('org.apache.geode:geode-dunit:1.13.3') {
     exclude module: 'geode-core'
   }
-  integrationTestImplementation('org.apache.geode:geode-junit:1.13.2') {
+  integrationTestImplementation('org.apache.geode:geode-junit:1.13.4') {
     exclude module: 'geode-core'
   }
   integrationTestImplementation(project(':geode-protobuf:geode-protobuf-test'))
