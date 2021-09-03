@@ -25,7 +25,7 @@ dependencies {
   api(platform(project(':boms:geode-all-bom')))
   api('org.apache.geode:geode-common:1.13.4')
   api(project(':geode-protobuf-messages'))
-  testImplementation('org.apache.geode:geode-core:1.13.4')
+  testImplementation('org.apache.geode:geode-core:1.14.0')
   testImplementation('org.apache.geode:geode-junit:1.13.4') {
     exclude module: 'geode-core'
   }
