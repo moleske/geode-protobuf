@@ -31,7 +31,7 @@ dependencies {
   }
   testImplementation(project(':geode-protobuf'))
   integrationTestImplementation('org.apache.geode:geode-core:1.13.4')
-  integrationTestImplementation('org.apache.geode:geode-dunit:1.13.4') {
+  integrationTestImplementation('org.apache.geode:geode-dunit:1.14.0') {
     exclude module: 'geode-core'
   }
   integrationTestImplementation('org.apache.geode:geode-junit:1.13.4') {
