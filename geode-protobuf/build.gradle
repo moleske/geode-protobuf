@@ -27,7 +27,7 @@ dependencies {
   implementation('org.apache.geode:geode-serialization:1.13.4')
   implementation('org.apache.geode:geode-tcp-server:1.13.4')
   implementation('org.apache.geode:geode-membership:1.13.4')
-  api('org.apache.geode:geode-core:1.13.4')
+  api('org.apache.geode:geode-core:1.14.2')
   api(project(':geode-protobuf-messages'))
   testImplementation('org.apache.geode:geode-core:1.13.4')
   testImplementation('org.apache.geode:geode-junit:1.14.0') {
