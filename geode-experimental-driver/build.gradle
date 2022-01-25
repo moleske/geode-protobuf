@@ -46,7 +46,7 @@ dependencies {
   }
 
   integrationTestImplementation('org.apache.geode:geode-logging:1.13.4')
-  integrationTestImplementation('org.apache.geode:geode-serialization:1.13.4')
+  integrationTestImplementation('org.apache.geode:geode-serialization:1.14.3')
   integrationTestImplementation('com.github.stefanbirkner:system-rules') {
     exclude module: 'junit-dep'
   }
