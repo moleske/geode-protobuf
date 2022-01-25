@@ -25,12 +25,12 @@ dependencies {
   api(platform(project(':boms:geode-all-bom')))
   api('org.apache.geode:geode-common:1.14.0')
   api(project(':geode-protobuf-messages'))
-  testImplementation('org.apache.geode:geode-core:1.14.0')
+  testImplementation('org.apache.geode:geode-core:1.14.3')
   testImplementation('org.apache.geode:geode-junit:1.14.0') {
     exclude module: 'geode-core'
   }
   testImplementation(project(':geode-protobuf'))
-  integrationTestImplementation('org.apache.geode:geode-core:1.13.4')
+  integrationTestImplementation('org.apache.geode:geode-core:1.14.3')
   integrationTestImplementation('org.apache.geode:geode-dunit:1.13.4') {
     exclude module: 'geode-core'
   }
