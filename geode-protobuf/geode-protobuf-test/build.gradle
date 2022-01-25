@@ -24,7 +24,7 @@ dependencies {
   api(platform(project(':boms:geode-all-bom')))
   api('org.apache.geode:geode-core:1.13.4')
   compileOnly('org.apache.geode:geode-common:1.14.0')
-  compileOnly('org.apache.geode:geode-protobuf:1.14.0')
+  compileOnly('org.apache.geode:geode-protobuf:1.14.3')
 
   implementation('junit:junit')
   implementation('org.mockito:mockito-core')
