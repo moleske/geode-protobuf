@@ -32,7 +32,7 @@ dependencies {
     exclude group: 'org.apache.logging.log4j'
   }
   implementation('com.github.docker-java:docker-java:3.2.12')
-  implementation('me.champeau.gradle:japicmp-gradle-plugin:0.3.0')
+  implementation('me.champeau.gradle:japicmp-gradle-plugin:0.4.0')
 
   implementation('junit:junit:4.13.2')
 
