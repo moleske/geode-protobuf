@@ -24,7 +24,7 @@ apply from: "${rootDir}/${scriptDir}/warnings.gradle"
 dependencies {
   api(platform(project(':boms:geode-all-bom')))
   implementation('org.apache.geode:geode-logging:1.13.4')
-  implementation('org.apache.geode:geode-serialization:1.13.4')
+  implementation('org.apache.geode:geode-serialization:1.14.4')
   implementation('org.apache.geode:geode-tcp-server:1.13.4')
   implementation('org.apache.geode:geode-membership:1.13.4')
   api('org.apache.geode:geode-core:1.13.4')
